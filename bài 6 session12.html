@@ -1,0 +1,866 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bài 6 session12</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="dự-án-smart-home">DỰ ÁN SMART-HOME</h1>
+<h2 id="nền-tảng-đấu-giá-và-cho-thuê-nhà-đất-trực-tuyến">Nền tảng đấu giá và cho thuê nhà đất trực tuyến</h2>
+<h1 id="phần-1.-phân-tích-bảng-excel-xấu-và-bảng-excel-đúng">PHẦN 1. PHÂN TÍCH BẢNG EXCEL XẤU VÀ BẢNG EXCEL ĐÚNG</h1>
+<h2 id="so-sánh-bảng-excel-xấu-và-bảng-excel-đúng">1.1. So sánh bảng Excel xấu và bảng Excel đúng</h2>
+<p>Tiêu chí</p>
+<p>Bảng Excel xấu</p>
+<p>Bảng Excel đúng</p>
+<p>Gộp ô</p>
+<p>Sử dụng Merge Cells trong vùng dữ liệu</p>
+<p>Không gộp ô trong vùng dữ liệu</p>
+<p>Tiêu đề</p>
+<p>Tiêu đề nhiều dòng, lẫn với dữ liệu</p>
+<p>Chỉ có một hàng tiêu đề rõ ràng</p>
+<p>Field</p>
+<p>Một cột chứa nhiều loại thông tin</p>
+<p>Mỗi cột tương ứng một trường dữ liệu</p>
+<p>Record</p>
+<p>Một hàng chứa nhiều bản ghi hoặc thiếu thông tin</p>
+<p>Mỗi hàng tương ứng một bản ghi</p>
+<p>Dòng trống</p>
+<p>Có dòng trống chen giữa danh sách</p>
+<p>Dữ liệu được trình bày liên tục</p>
+<p>Kiểu dữ liệu</p>
+<p>Giá thuê vừa là số vừa là chữ</p>
+<p>Giá thuê lưu dưới dạng số</p>
+<p>Mã định danh</p>
+<p>Mã nhà đất bị trùng hoặc để trống</p>
+<p>Mỗi bất động sản có mã riêng</p>
+<p>Công thức</p>
+<p>Gõ thủ công, dễ sai khi sao chép</p>
+<p>Sử dụng công thức và vùng tham chiếu phù hợp</p>
+<p>Trình bày</p>
+<p>Quá nhiều màu sắc, khó đọc</p>
+<p>Màu sắc thống nhất, dễ quan sát</p>
+<h2 id="khái-niệm-field-và-record">1.2. Khái niệm Field và Record</h2>
+<ul>
+<li>
+<p><strong>Field:</strong> Trường dữ liệu, tương ứng với một cột trong bảng.</p>
+</li>
+<li>
+<p><strong>Record:</strong> Bản ghi dữ liệu, tương ứng với một hàng trong bảng.</p>
+</li>
+</ul>
+<p>Ví dụ:</p>
+<p>Ma_NhaDat</p>
+<p>Loai_BDS</p>
+<p>Khu_Vuc</p>
+<p>Gia_Thue_Thang</p>
+<p>SH001</p>
+<p>Căn hộ</p>
+<p>Cầu Giấy</p>
+<p>12000000</p>
+<p>SH002</p>
+<p>Nhà phố</p>
+<p>Thanh Xuân</p>
+<p>18000000</p>
+<p>SH003</p>
+<p>Căn hộ</p>
+<p>Nam Từ Liêm</p>
+<p>9500000</p>
+<p>Trong bảng trên:</p>
+<ul>
+<li>
+<p>Ma_NhaDat là một Field.</p>
+</li>
+<li>
+<p>Hàng có mã SH001 là một Record.</p>
+</li>
+</ul>
+<h2 id="năm-quy-tắc-vàng-khi-thiết-kế-bảng-excel">1.3. Năm quy tắc vàng khi thiết kế bảng Excel</h2>
+<ol>
+<li>
+<p>Không gộp ô trong vùng dữ liệu.</p>
+</li>
+<li>
+<p>Mỗi cột chỉ lưu một loại thông tin.</p>
+</li>
+<li>
+<p>Mỗi cột có tiêu đề riêng biệt.</p>
+</li>
+<li>
+<p>Không để dòng trống hoặc cột trống chen giữa bảng dữ liệu.</p>
+</li>
+<li>
+<p>Sử dụng đúng kiểu dữ liệu và công thức nhất quán.</p>
+</li>
+</ol>
+<hr>
+<h1 id="phần-2.-tài-liệu-srs-dự-án-smart-home">PHẦN 2. TÀI LIỆU SRS DỰ ÁN SMART-HOME</h1>
+<ol>
+<li>
+<h2 id="giới-thiệu">Giới thiệu</h2>
+</li>
+</ol>
+<h3 id="mục-đích">1.1. Mục đích</h3>
+<p>Tài liệu SRS (Software Requirements Specification) mô tả các yêu cầu phần mềm của nền tảng Smart-Home.</p>
+<p>Tài liệu giúp nhóm phát triển, đối tác, kiểm thử và nhà đầu tư hiểu rõ mục tiêu, chức năng và giới hạn của hệ thống.</p>
+<h3 id="phạm-vi-dự-án">1.2. Phạm vi dự án</h3>
+<p>Smart-Home là nền tảng trực tuyến hỗ trợ:</p>
+<ul>
+<li>
+<p>Tìm kiếm và xem thông tin nhà đất.</p>
+</li>
+<li>
+<p>Đăng tin bất động sản.</p>
+</li>
+<li>
+<p>Kiểm duyệt và xác minh tin đăng.</p>
+</li>
+<li>
+<p>Gửi yêu cầu thuê nhà.</p>
+</li>
+<li>
+<p>Tham gia các phiên đấu giá trực tuyến.</p>
+</li>
+<li>
+<p>Tra cứu tỷ lệ hoa hồng môi giới.</p>
+</li>
+<li>
+<p>Theo dõi trạng thái giao dịch.</p>
+</li>
+</ul>
+<h3 id="đối-tượng-sử-dụng">1.3. Đối tượng sử dụng</h3>
+<ul>
+<li>
+<p>Người mua hoặc thuê nhà đất.</p>
+</li>
+<li>
+<p>Chủ sở hữu bất động sản.</p>
+</li>
+<li>
+<p>Nhân viên môi giới.</p>
+</li>
+<li>
+<p>Nhân viên kiểm duyệt.</p>
+</li>
+<li>
+<p>Quản trị viên hệ thống.</p>
+</li>
+<li>
+<p>Nhóm phát triển và kiểm thử phần mềm.</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<h2 id="mô-tả-tổng-quan">Mô tả tổng quan</h2>
+</li>
+</ol>
+<h3 id="nhóm-người-dùng">2.1. Nhóm người dùng</h3>
+<h4 id="khách-truy-cập">2.1.1. Khách truy cập</h4>
+<ul>
+<li>
+<p>Tìm kiếm nhà đất.</p>
+</li>
+<li>
+<p>Xem thông tin tin đăng công khai.</p>
+</li>
+<li>
+<p>Lọc bất động sản theo khu vực và giá.</p>
+</li>
+</ul>
+<h4 id="thành-viên">2.1.2. Thành viên</h4>
+<ul>
+<li>
+<p>Đăng nhập và quản lý hồ sơ.</p>
+</li>
+<li>
+<p>Lưu tin yêu thích.</p>
+</li>
+<li>
+<p>Gửi yêu cầu thuê nhà.</p>
+</li>
+<li>
+<p>Đăng ký tham gia phiên đấu giá.</p>
+</li>
+</ul>
+<h4 id="môi-giới-và-chủ-nhà">2.1.3. Môi giới và chủ nhà</h4>
+<ul>
+<li>
+<p>Tạo và chỉnh sửa tin đăng.</p>
+</li>
+<li>
+<p>Theo dõi khách hàng quan tâm.</p>
+</li>
+<li>
+<p>Quản lý yêu cầu thuê.</p>
+</li>
+<li>
+<p>Tra cứu tỷ lệ hoa hồng.</p>
+</li>
+</ul>
+<h4 id="quản-trị-viên">2.1.4. Quản trị viên</h4>
+<ul>
+<li>
+<p>Quản lý tài khoản.</p>
+</li>
+<li>
+<p>Kiểm duyệt tin đăng.</p>
+</li>
+<li>
+<p>Xử lý báo cáo vi phạm.</p>
+</li>
+<li>
+<p>Theo dõi nhật ký hoạt động.</p>
+</li>
+</ul>
+<h3 id="môi-trường-vận-hành">2.2. Môi trường vận hành</h3>
+<p>Hệ thống dự kiến hoạt động trên trình duyệt web của máy tính và điện thoại.</p>
+<p>Các thành phần chính gồm:</p>
+<ul>
+<li>
+<p>Giao diện người dùng.</p>
+</li>
+<li>
+<p>Máy chủ ứng dụng.</p>
+</li>
+<li>
+<p>Cơ sở dữ liệu.</p>
+</li>
+<li>
+<p>Dịch vụ gửi thông báo.</p>
+</li>
+<li>
+<p>Cổng thanh toán hoặc đặt cọc của bên thứ ba nếu được tích hợp.</p>
+</li>
+</ul>
+<h3 id="giả-định-và-giới-hạn">2.3. Giả định và giới hạn</h3>
+<ul>
+<li>
+<p>Tin đăng phải được kiểm duyệt trước khi công khai.</p>
+</li>
+<li>
+<p>Thông tin pháp lý của bất động sản cần được xác minh.</p>
+</li>
+<li>
+<p>Tính năng thanh toán hoặc đặt cọc chỉ triển khai khi đáp ứng yêu cầu pháp lý.</p>
+</li>
+<li>
+<p>Phiên bản MVP tập trung vào các chức năng thiết yếu.</p>
+</li>
+</ul>
+<ol start="3">
+<li>
+<h2 id="yêu-cầu-chức-năng">Yêu cầu chức năng</h2>
+</li>
+</ol>
+<h3 id="tài-khoản-và-phân-quyền">3.1. Tài khoản và phân quyền</h3>
+<ul>
+<li>
+<p><strong>FR-01:</strong> Người dùng có thể đăng ký, đăng nhập và đăng xuất.</p>
+</li>
+<li>
+<p><strong>FR-02:</strong> Hệ thống phân quyền theo vai trò người dùng.</p>
+</li>
+<li>
+<p><strong>FR-03:</strong> Người dùng có thể cập nhật hồ sơ và đổi mật khẩu.</p>
+</li>
+</ul>
+<h3 id="tìm-kiếm-và-xem-tin">3.2. Tìm kiếm và xem tin</h3>
+<ul>
+<li>
+<p><strong>FR-04:</strong> Người dùng có thể lọc theo khu vực, loại bất động sản, mức giá và mục đích mua hoặc thuê.</p>
+</li>
+<li>
+<p><strong>FR-05:</strong> Trang chi tiết hiển thị mã tin, khu vực, giá, diện tích, hình ảnh, mô tả và trạng thái xác minh.</p>
+</li>
+<li>
+<p><strong>FR-06:</strong> Thành viên có thể lưu tin yêu thích và gửi yêu cầu liên hệ.</p>
+</li>
+</ul>
+<h3 id="đăng-tin-và-kiểm-duyệt">3.3. Đăng tin và kiểm duyệt</h3>
+<ul>
+<li>
+<p><strong>FR-07:</strong> Môi giới hoặc chủ nhà có thể tạo, sửa và tạm ẩn tin đăng của mình.</p>
+</li>
+<li>
+<p><strong>FR-08:</strong> Tin đăng mới có trạng thái “Chờ duyệt”.</p>
+</li>
+<li>
+<p><strong>FR-09:</strong> Quản trị viên có thể duyệt, từ chối hoặc yêu cầu bổ sung thông tin.</p>
+</li>
+<li>
+<p><strong>FR-10:</strong> Hệ thống lưu lý do và thời điểm xử lý tin đăng.</p>
+</li>
+</ul>
+<h3 id="đấu-giá-trực-tuyến">3.4. Đấu giá trực tuyến</h3>
+<ul>
+<li>
+<p><strong>FR-11:</strong> Người đủ điều kiện có thể đăng ký tham gia phiên đấu giá đang mở.</p>
+</li>
+<li>
+<p><strong>FR-12:</strong> Hệ thống hiển thị giá hiện tại, bước giá tối thiểu và thời gian phiên đấu giá.</p>
+</li>
+<li>
+<p><strong>FR-13:</strong> Hệ thống từ chối mức giá không hợp lệ.</p>
+</li>
+<li>
+<p><strong>FR-14:</strong> Hệ thống ghi nhận thời gian của từng lượt trả giá.</p>
+</li>
+<li>
+<p><strong>FR-15:</strong> Khi phiên kết thúc, hệ thống khóa lượt trả giá và lưu kết quả.</p>
+</li>
+<li>
+<p><strong>FR-16:</strong> Hệ thống gửi thông báo kết quả cho các bên liên quan.</p>
+</li>
+</ul>
+<h3 id="quản-lý-thuê-và-hoa-hồng">3.5. Quản lý thuê và hoa hồng</h3>
+<ul>
+<li>
+<p><strong>FR-17:</strong> Người thuê có thể gửi yêu cầu thuê và thời hạn dự kiến.</p>
+</li>
+<li>
+<p><strong>FR-18:</strong> Môi giới có thể theo dõi và cập nhật trạng thái yêu cầu.</p>
+</li>
+<li>
+<p><strong>FR-19:</strong> Hệ thống tính giá thuê sau chiết khấu.</p>
+</li>
+<li>
+<p><strong>FR-20:</strong> Hệ thống tra cứu tỷ lệ hoa hồng theo mã gói dịch vụ.</p>
+</li>
+<li>
+<p><strong>FR-21:</strong> Hệ thống hiển thị giá trị hoa hồng ước tính.</p>
+</li>
+</ul>
+<ol start="4">
+<li>
+<h2 id="yêu-cầu-phi-chức-năng">Yêu cầu phi chức năng</h2>
+</li>
+</ol>
+<h3 id="bảo-mật">4.1. Bảo mật</h3>
+<ul>
+<li>
+<p><strong>NFR-01:</strong> Mật khẩu phải được băm bằng thuật toán phù hợp.</p>
+</li>
+<li>
+<p><strong>NFR-02:</strong> Người dùng chỉ được truy cập chức năng phù hợp với quyền hạn.</p>
+</li>
+<li>
+<p><strong>NFR-03:</strong> Các thao tác quan trọng phải có nhật ký kiểm tra.</p>
+</li>
+</ul>
+<h3 id="hiệu-năng-và-khả-dụng">4.2. Hiệu năng và khả dụng</h3>
+<ul>
+<li>
+<p><strong>NFR-04:</strong> Trong điều kiện tải mục tiêu của MVP, 95% yêu cầu tìm kiếm thông thường phản hồi trong 3 giây.</p>
+</li>
+<li>
+<p><strong>NFR-05:</strong> Giao diện phù hợp với màn hình máy tính và điện thoại.</p>
+</li>
+<li>
+<p><strong>NFR-06:</strong> Lỗi dịch vụ bên ngoài phải được thông báo rõ ràng.</p>
+</li>
+</ul>
+<h3 id="tính-toàn-vẹn-dữ-liệu">4.3. Tính toàn vẹn dữ liệu</h3>
+<ul>
+<li>
+<p><strong>NFR-07:</strong> Mỗi tin đăng có mã định danh duy nhất.</p>
+</li>
+<li>
+<p><strong>NFR-08:</strong> Giá thuê và tỷ lệ hoa hồng được lưu dưới dạng số.</p>
+</li>
+<li>
+<p><strong>NFR-09:</strong> Thay đổi trạng thái đấu giá phải lưu thời gian và tài khoản thực hiện.</p>
+</li>
+</ul>
+<ol start="5">
+<li>
+<h2 id="dữ-liệu-và-quy-tắc-nghiệp-vụ">Dữ liệu và quy tắc nghiệp vụ</h2>
+</li>
+</ol>
+<h3 id="các-trường-dữ-liệu-chính">5.1. Các trường dữ liệu chính</h3>
+<p>Tên trường</p>
+<p>Ý nghĩa</p>
+<p>Ma_NhaDat</p>
+<p>Mã bất động sản</p>
+<p>Loai_BDS</p>
+<p>Loại bất động sản</p>
+<p>Khu_Vuc</p>
+<p>Khu vực</p>
+<p>Gia_Thue_Thang</p>
+<p>Giá thuê trước chiết khấu</p>
+<p>Chiet_Khau_%</p>
+<p>Tỷ lệ chiết khấu</p>
+<p>Gia_Sau_CK</p>
+<p>Giá thuê sau chiết khấu</p>
+<p>Ma_Goi_HH</p>
+<p>Mã gói hoa hồng</p>
+<p>Ty_Le_HH</p>
+<p>Tỷ lệ hoa hồng</p>
+<p>Hoa_Hong_Uoc_Tinh</p>
+<p>Giá trị hoa hồng ước tính</p>
+<p>Trang_Thai</p>
+<p>Trạng thái tin đăng</p>
+<h3 id="công-thức-tính-giá-thuê">5.2. Công thức tính giá thuê</h3>
+<p><strong>Giá thuê sau chiết khấu:</strong></p>
+<p>Giá thuê sau chiết khấu = Giá thuê tháng × (1 − Tỷ lệ chiết khấu)</p>
+<p>Ví dụ:</p>
+<ul>
+<li>
+<p>Giá thuê ban đầu: 12.000.000 đồng/tháng.</p>
+</li>
+<li>
+<p>Tỷ lệ chiết khấu: 5%.</p>
+</li>
+<li>
+<p>Giá thuê sau chiết khấu: 11.400.000 đồng/tháng.</p>
+</li>
+</ul>
+<h3 id="công-thức-tính-hoa-hồng">5.3. Công thức tính hoa hồng</h3>
+<p>Hoa hồng ước tính = Giá trị giao dịch × Tỷ lệ hoa hồng.</p>
+<p>Lưu ý: Tỷ lệ và cơ sở tính hoa hồng thực tế phải được xác nhận theo hợp đồng và chính sách áp dụng.</p>
+<h3 id="trạng-thái-tin-đăng">5.4. Trạng thái tin đăng</h3>
+<ul>
+<li>
+<p>Nháp.</p>
+</li>
+<li>
+<p>Chờ duyệt.</p>
+</li>
+<li>
+<p>Đã duyệt.</p>
+</li>
+<li>
+<p>Từ chối.</p>
+</li>
+<li>
+<p>Tạm ẩn.</p>
+</li>
+<li>
+<p>Đã giao dịch.</p>
+</li>
+</ul>
+<ol start="6">
+<li>
+<h2 id="tiêu-chí-nghiệm-thu">Tiêu chí nghiệm thu</h2>
+</li>
+</ol>
+<h3 id="kiểm-thử-chức-năng">6.1. Kiểm thử chức năng</h3>
+<ul>
+<li>
+<p><strong>AT-01:</strong> Bộ lọc trả về tin phù hợp.</p>
+</li>
+<li>
+<p><strong>AT-02:</strong> Tin mới chưa duyệt không hiển thị công khai.</p>
+</li>
+<li>
+<p><strong>AT-03:</strong> Người dùng không thể sửa tin của tài khoản khác.</p>
+</li>
+<li>
+<p><strong>AT-04:</strong> Giá trả thấp hơn mức hợp lệ bị từ chối.</p>
+</li>
+<li>
+<p><strong>AT-05:</strong> Hệ thống không nhận lượt trả giá sau khi phiên kết thúc.</p>
+</li>
+<li>
+<p><strong>AT-06:</strong> Kết quả đấu giá được lưu và thông báo.</p>
+</li>
+<li>
+<p><strong>AT-07:</strong> Giá thuê sau chiết khấu khớp công thức.</p>
+</li>
+<li>
+<p><strong>AT-08:</strong> Mã hoa hồng hợp lệ trả về đúng tỷ lệ.</p>
+</li>
+<li>
+<p><strong>AT-09:</strong> Mã hoa hồng không tồn tại hiển thị thông báo lỗi dễ hiểu.</p>
+</li>
+<li>
+<p><strong>AT-10:</strong> Kéo công thức Excel xuống 500 dòng không làm trôi vùng tra cứu.</p>
+</li>
+</ul>
+<hr>
+<h1 id="phần-3.-thiết-kế-bảng-excel-quản-lý-nhà-đất">PHẦN 3. THIẾT KẾ BẢNG EXCEL QUẢN LÝ NHÀ ĐẤT</h1>
+<ol>
+<li>
+<h2 id="cấu-trúc-bảng-nhadat">Cấu trúc bảng NhaDat</h2>
+</li>
+</ol>
+<p>Ma_NhaDat</p>
+<p>Loai_BDS</p>
+<p>Khu_Vuc</p>
+<p>Gia_Thue_Thang</p>
+<p>Chiet_Khau_%</p>
+<p>Gia_Sau_CK</p>
+<p>Ma_Goi_HH</p>
+<p>Ty_Le_HH</p>
+<p>Hoa_Hong_Uoc_Tinh</p>
+<p>Trang_Thai</p>
+<p>SH001</p>
+<p>Căn hộ</p>
+<p>Cầu Giấy</p>
+<p>12000000</p>
+<p>5%</p>
+<p>11400000</p>
+<p>HH01</p>
+<p>3%</p>
+<p>360000</p>
+<p>Đang đăng</p>
+<p>SH002</p>
+<p>Nhà phố</p>
+<p>Thanh Xuân</p>
+<p>18000000</p>
+<p>10%</p>
+<p>16200000</p>
+<p>HH02</p>
+<p>4%</p>
+<p>720000</p>
+<p>Chờ duyệt</p>
+<p>SH003</p>
+<p>Căn hộ</p>
+<p>Nam Từ Liêm</p>
+<p>9500000</p>
+<p>0%</p>
+<p>9500000</p>
+<p>HH01</p>
+<p>3%</p>
+<p>285000</p>
+<p>Đang đăng</p>
+<p>SH004</p>
+<p>Biệt thự</p>
+<p>Tây Hồ</p>
+<p>45000000</p>
+<p>8%</p>
+<p>41400000</p>
+<p>HH04</p>
+<p>6%</p>
+<p>2700000</p>
+<p>Đang đăng</p>
+<p>SH005</p>
+<p>Nhà phố</p>
+<p>Hai Bà Trưng</p>
+<p>22000000</p>
+<p>7%</p>
+<p>20460000</p>
+<p>HH03</p>
+<p>5%</p>
+<p>1100000</p>
+<p>Đã cho thuê</p>
+<ol start="2">
+<li>
+<h2 id="bảng-tra-cứu-hoa-hồng-banghh">Bảng tra cứu hoa hồng BangHH</h2>
+</li>
+</ol>
+<p>Ma_Goi_HH</p>
+<p>Ty_Le_HH</p>
+<p>Ghi_Chu</p>
+<p>HH01</p>
+<p>3%</p>
+<p>Gói cơ bản</p>
+<p>HH02</p>
+<p>4%</p>
+<p>Gói tiêu chuẩn</p>
+<p>HH03</p>
+<p>5%</p>
+<p>Gói nâng cao</p>
+<p>HH04</p>
+<p>6%</p>
+<p>Gói cao cấp</p>
+<p>HH05</p>
+<p>2.5%</p>
+<p>Gói đất nền</p>
+<ol start="3">
+<li>
+<h2 id="công-thức-excel">Công thức Excel</h2>
+</li>
+</ol>
+<p>Giả sử:</p>
+<ul>
+<li>
+<p>Cột D: Giá thuê tháng.</p>
+</li>
+<li>
+<p>Cột E: Chiết khấu.</p>
+</li>
+<li>
+<p>Cột F: Giá thuê sau chiết khấu.</p>
+</li>
+<li>
+<p>Cột G: Mã gói hoa hồng.</p>
+</li>
+<li>
+<p>Cột H: Tỷ lệ hoa hồng.</p>
+</li>
+<li>
+<p>Cột I: Hoa hồng ước tính.</p>
+</li>
+</ul>
+<h3 id="tính-giá-thuê-sau-chiết-khấu">3.1. Tính giá thuê sau chiết khấu</h3>
+<p>Nhập vào ô F2:</p>
+<pre><code>
+</code></pre>
+<p>Ví dụ: Giá thuê 12.000.000 đồng, chiết khấu 5% thì kết quả là 11.400.000 đồng.</p>
+<h3 id="tra-cứu-tỷ-lệ-hoa-hồng-bằng-vlookup">3.2. Tra cứu tỷ lệ hoa hồng bằng VLOOKUP</h3>
+<p>Nhập vào ô H2:</p>
+<pre><code>
+</code></pre>
+<p>Ý nghĩa:</p>
+<ul>
+<li>
+<p>G2: Mã gói hoa hồng cần tra cứu.</p>
+</li>
+<li>
+<p>BangHH!$A<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>:</mo></mrow><annotation encoding="application/x-tex">2:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">:</span></span></span></span></span>B$6: Vùng dữ liệu tra cứu.</p>
+</li>
+<li>
+<p>2: Lấy kết quả ở cột thứ hai.</p>
+</li>
+<li>
+<p>FALSE: Tìm kiếm chính xác.</p>
+</li>
+<li>
+<p>IFERROR: Hiển thị thông báo nếu mã không tồn tại.</p>
+</li>
+</ul>
+<h3 id="tính-hoa-hồng-ước-tính">3.3. Tính hoa hồng ước tính</h3>
+<p>Nhập vào ô I2:</p>
+<pre><code>
+</code></pre>
+<p>Kéo công thức xuống các hàng tiếp theo.</p>
+<blockquote>
+<p>Lưu ý: Công thức ví dụ dùng giá thuê tháng làm cơ sở tính hoa hồng. Nếu hợp đồng quy định hoa hồng tính theo giá trị giao dịch hoặc doanh thu khác, cần thay công thức tương ứng.</p>
+</blockquote>
+<hr>
+<h1 id="phần-4.-kiểm-thử-lỗi-trôi-vùng-tra-cứu-và-dấu-">PHẦN 4. KIỂM THỬ LỖI TRÔI VÙNG TRA CỨU VÀ DẤU $</h1>
+<h2 id="công-thức-sai">4.1. Công thức sai</h2>
+<pre><code>
+</code></pre>
+<p>Khi kéo công thức xuống, Excel có thể tự đổi vùng tra cứu:</p>
+<ul>
+<li>
+<p>Hàng 2: A2:B6</p>
+</li>
+<li>
+<p>Hàng 3: A3:B7</p>
+</li>
+<li>
+<p>Hàng 4: A4:B8</p>
+</li>
+</ul>
+<p>Vùng tra cứu bị dịch chuyển, khiến công thức có thể trả về kết quả sai hoặc lỗi #N/A.</p>
+<h2 id="công-thức-đúng">4.2. Công thức đúng</h2>
+<pre><code>
+</code></pre>
+<p>Dấu $ khóa cột và hàng của vùng tra cứu.</p>
+<p>Tham chiếu</p>
+<p>Ý nghĩa</p>
+<p>A2</p>
+<p>Cột và hàng đều có thể thay đổi</p>
+<p>$A$2</p>
+<p>Khóa cả cột A và hàng 2</p>
+<p>$A2</p>
+<p>Khóa cột A, hàng có thể thay đổi</p>
+<p>A$2</p>
+<p>Cột có thể thay đổi, khóa hàng 2</p>
+<h2 id="cách-sử-dụng-phím-f4">4.3. Cách sử dụng phím F4</h2>
+<ol>
+<li>
+<p>Chọn ô đang chứa công thức.</p>
+</li>
+<li>
+<p>Nhấp vào thanh công thức.</p>
+</li>
+<li>
+<p>Bôi chọn tham chiếu A2:B6.</p>
+</li>
+<li>
+<p>Nhấn F4 để chuyển thành $A<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>:</mo></mrow><annotation encoding="application/x-tex">2:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">:</span></span></span></span></span>B$6.</p>
+</li>
+<li>
+<p>Nhấn Enter.</p>
+</li>
+<li>
+<p>Kéo công thức xuống các dòng còn lại.</p>
+</li>
+<li>
+<p>Kiểm tra xem vùng tra cứu có giữ nguyên hay không.</p>
+</li>
+</ol>
+<p>Trên một số laptop, cần nhấn Fn + F4.</p>
+<h2 id="kiểm-thử-mã-không-hợp-lệ">4.4. Kiểm thử mã không hợp lệ</h2>
+<p>Ví dụ, nhập mã HH99 vào cột Ma_Goi_HH.</p>
+<p>Công thức:</p>
+<pre><code>
+</code></pre>
+<p>Kết quả mong đợi:</p>
+<p>Kiểm tra mã</p>
+<p>Điều này giúp người dùng nhận biết mã không tồn tại thay vì để lỗi công thức hiển thị trực tiếp.</p>
+<hr>
+<h1 id="phần-5.-pitch-deck-gọi-vốn-smart-home">PHẦN 5. PITCH DECK GỌI VỐN SMART-HOME</h1>
+<h2 id="nguyên-tắc-thiết-kế">5.1. Nguyên tắc thiết kế</h2>
+<p>Bộ Pitch Deck tuân thủ Rule 10/20/30:</p>
+<ul>
+<li>
+<p>Không quá 10 slide.</p>
+</li>
+<li>
+<p>Thời lượng thuyết trình khoảng 20 phút.</p>
+</li>
+<li>
+<p>Cỡ chữ tối thiểu khoảng 30 pt theo quy tắc kinh điển của Guy Kawasaki; có thể điều chỉnh hợp lý cho biểu đồ hoặc chú thích.</p>
+</li>
+</ul>
+<p>Mỗi slide chỉ tập trung vào một thông điệp chính.</p>
+<p>Thiết kế cần:</p>
+<ul>
+<li>
+<p>Có khoảng trắng (White Space).</p>
+</li>
+<li>
+<p>Không nhồi nhét nhiều đoạn văn.</p>
+</li>
+<li>
+<p>Dùng tối đa 3–4 ý chính trên mỗi slide.</p>
+</li>
+<li>
+<p>Dùng màu sắc thống nhất.</p>
+</li>
+<li>
+<p>Sử dụng biểu đồ khi giúp thông tin dễ hiểu hơn.</p>
+</li>
+</ul>
+<h2 id="kịch-bản-8-slide">5.2. Kịch bản 8 slide</h2>
+<h3 id="slide-1-—-smart-home">Slide 1 — Smart-Home</h3>
+<p><strong>Thông điệp:</strong> Đưa giao dịch nhà đất lên một nền tảng minh bạch.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Tìm kiếm nhà đất.</p>
+</li>
+<li>
+<p>Cho thuê trực tuyến.</p>
+</li>
+<li>
+<p>Đấu giá trực tuyến.</p>
+</li>
+</ul>
+<p>Thiết kế: Tiêu đề lớn, nền xanh đậm, điểm nhấn màu cam và nhiều khoảng trắng.</p>
+<h3 id="slide-2-—-vấn-đề">Slide 2 — Vấn đề</h3>
+<p><strong>Thông điệp:</strong> Thông tin phân tán khiến giao dịch khó tin cậy.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Tin đăng thiếu chuẩn hóa, khó so sánh.</p>
+</li>
+<li>
+<p>Trạng thái xác minh chưa rõ ràng.</p>
+</li>
+<li>
+<p>Quy trình hỏi thuê và đấu giá còn rời rạc.</p>
+</li>
+</ul>
+<h3 id="slide-3-—-giải-pháp">Slide 3 — Giải pháp</h3>
+<p><strong>Thông điệp:</strong> Một quy trình số hóa từ tin đăng đến giao dịch.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Tin đăng có cấu trúc và trạng thái kiểm duyệt.</p>
+</li>
+<li>
+<p>Tìm kiếm theo khu vực, giá và loại bất động sản.</p>
+</li>
+<li>
+<p>Phiên đấu giá hiển thị quy tắc và thời gian rõ ràng.</p>
+</li>
+</ul>
+<h3 id="slide-4-—-sản-phẩm">Slide 4 — Sản phẩm</h3>
+<p><strong>Thông điệp:</strong> MVP tập trung vào ba luồng cốt lõi.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Tìm kiếm và lưu tin.</p>
+</li>
+<li>
+<p>Đăng tin, kiểm duyệt và liên hệ.</p>
+</li>
+<li>
+<p>Yêu cầu thuê và đấu giá có nhật ký.</p>
+</li>
+</ul>
+<h3 id="slide-5-—-thị-trường">Slide 5 — Thị trường</h3>
+<p><strong>Thông điệp:</strong> Bắt đầu tại một khu vực để kiểm chứng nhu cầu.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Thử nghiệm với một nhóm môi giới và chủ nhà.</p>
+</li>
+<li>
+<p>Đo số tin hợp lệ, lượt hỏi thuê và tỷ lệ phản hồi.</p>
+</li>
+<li>
+<p>Mở rộng sau khi đạt tiêu chí MVP.</p>
+</li>
+</ul>
+<p>Lưu ý: Cần bổ sung số liệu khảo sát thị trường thực tế trước khi gọi vốn.</p>
+<h3 id="slide-6-—-mô-hình-doanh-thu">Slide 6 — Mô hình doanh thu</h3>
+<p><strong>Thông điệp:</strong> Doanh thu đến từ các dịch vụ có giá trị rõ ràng.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Gói đăng tin nổi bật hoặc thuê bao môi giới.</p>
+</li>
+<li>
+<p>Phí dịch vụ theo giao dịch nếu phù hợp pháp lý.</p>
+</li>
+<li>
+<p>Dịch vụ xác minh hoặc đối tác tùy chọn.</p>
+</li>
+</ul>
+<p>Các nguồn thu này là giả thuyết cần kiểm chứng bằng thử nghiệm thực tế.</p>
+<h3 id="slide-7-—-lợi-thế-và-kế-hoạch">Slide 7 — Lợi thế và kế hoạch</h3>
+<p><strong>Thông điệp:</strong> Niềm tin là chỉ số sản phẩm cần xây dựng.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Chuẩn hóa dữ liệu và quy trình kiểm duyệt.</p>
+</li>
+<li>
+<p>Theo dõi tỷ lệ tin sai, thời gian phản hồi và chuyển đổi.</p>
+</li>
+<li>
+<p>Thu thập phản hồi và cải tiến theo chu kỳ.</p>
+</li>
+</ul>
+<h3 id="slide-8-—-đề-nghị-đầu-tư">Slide 8 — Đề nghị đầu tư</h3>
+<p><strong>Thông điệp:</strong> Nguồn lực đầu tư sẽ dùng để kiểm chứng ba giả thuyết.</p>
+<p>Nội dung:</p>
+<ul>
+<li>
+<p>Xây dựng MVP và bảo mật nền tảng.</p>
+</li>
+<li>
+<p>Thử nghiệm với đối tác môi giới và chủ nhà.</p>
+</li>
+<li>
+<p>Đo KPI trước khi chốt quy mô vốn và kế hoạch mở rộng.</p>
+</li>
+</ul>
+<p>Trước khi trình bày với nhà đầu tư, hãy bổ sung số vốn cần gọi, dự toán chi phí, tiến độ và kết quả thử nghiệm thực tế.</p>
+<hr>
+<h1 id="phần-6.-kết-luận">PHẦN 6. KẾT LUẬN</h1>
+<p>Dự án Smart-Home giúp vận dụng đồng thời ba nhóm kỹ năng:</p>
+<ol>
+<li>
+<p><strong>Word:</strong> Sử dụng Heading 1, Heading 2, Heading 3 để tạo tài liệu SRS có cấu trúc chuyên nghiệp.</p>
+</li>
+<li>
+<p><strong>Excel:</strong> Quản lý dữ liệu theo Field và Record, tính chiết khấu, tra cứu hoa hồng bằng VLOOKUP và khóa vùng bằng dấu $.</p>
+</li>
+<li>
+<p><strong>PowerPoint:</strong> Thiết kế Pitch Deck tối đa 10 slide, mỗi slide một thông điệp và có khoảng trắng hợp lý.</p>
+</li>
+</ol>
+</div>
+</body>
+
+</html>
